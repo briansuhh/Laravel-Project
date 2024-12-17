@@ -8,9 +8,9 @@ Route::get('/', function () {
 });
 
 
-// Route::get('/home', function () {
-//     return 'Sample Ui';
-// })->name('homePage');
+Route::get('/home', function () {
+    return 'Sample Ui';
+})->name('homePage');
 
 // Route::get('/about', function() {
 //     return "<a href='" .route('homePage'). "'> Home </a>";
@@ -42,7 +42,15 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('/home/{name}', function($name) {
         return view('admin.home', ['name'=> $name]);
     });
+
+    Route::get('/home1', function() {
+        return view('admin.home1');
+    });
     
+    Route::get('/home2', function() {
+        return view('admin.home2');
+    });
+
     Route::get('/dashboard', function() {
         return view('admin.dashboard');
     })->name('hello');
