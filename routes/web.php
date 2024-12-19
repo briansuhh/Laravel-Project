@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 use Psy\CodeCleaner\FunctionReturnInWriteContextPass;
 
@@ -43,13 +44,11 @@ Route::group(['prefix' => 'admin'], function(){
         return view('admin.home', ['name'=> $name]);
     });
 
-    Route::get('/home1', function() {
-        return view('admin.home1');
-    });
-    
-    Route::get('/home2', function() {
-        return view('admin.home2');
-    });
+    // Route::get('/home1', function() {
+    //     return view('admin.home1', compact('blogs'));
+    // });
+
+    Route::get('/home1', [BlogController::class, 'retrieve_data']);
 
     Route::get('/dashboard', function() {
         return view('admin.dashboard');
@@ -66,3 +65,4 @@ Route::fallback(function(){
     
 // });
 
+Route::get('/blog-data', [BlogController::class, 'index']);
