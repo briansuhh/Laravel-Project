@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $blogs = [
             [
                 'picture' => '../../1.jpg',
@@ -37,7 +38,8 @@ class BlogController extends Controller
         return $blogs;
     }
 
-    public function retrieve_data() {
+    public function retrieve_data()
+    {
         $blogs = [
             [
                 'picture' => '../../1.jpg',
