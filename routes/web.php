@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\FourController;
 use Illuminate\Support\Facades\Route;
 use Psy\CodeCleaner\FunctionReturnInWriteContextPass;
 
@@ -39,6 +40,8 @@ Route::group(['prefix' => 'admin'], function () {
     })->name('hello');
 });
 
+
+Route::get('/activityfour', [FourController::class, 'retrieve_data']);
 
 Route::get('/blog-data', [BlogController::class, 'index']);
 
