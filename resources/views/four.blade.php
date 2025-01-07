@@ -3,24 +3,25 @@
     <div class="container-fluid">
         <div class="row p-3">
             <div class="col-lg-3 p-3">
-                <form class="border p-3">
+                <form  method="POST" action="{{route('login.submit')}}" class="border p-3">
+                    @csrf
                     <div class="row mb-3">
                         <label for="inputEmail3" class="col-sm-3 col-form-label text-end pe-0">Email:</label>
                         <div class="col-sm-9">
-                            <input type="email" class="form-control" id="inputEmail3">
+                            <input type="email" class="form-control" id="inputEmail3" name="email">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputPassword3" class="col-sm-3 col-form-label text-end pe-0">Password:</label>
                         <div class="col-sm-9">
-                            <input type="password" class="form-control" id="inputPassword3">
+                            <input type="password" class="form-control" id="inputPassword3" name="password">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-sm-3"></div>
                         <div class="col-sm-9">
-                            <button type="button" class="btn btn-primary">Login</button>
+                            <button type="submit" class="btn btn-primary">Login</button>
                             <a class="link-opacity-100" href="#">Forgot password?</a>
                         </div>
                     </div>

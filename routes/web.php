@@ -41,7 +41,9 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 
-Route::get('/activityfour', [FourController::class, 'retrieve_data']);
+Route::get('/activityfour', [FourController::class, 'index']);
+
+Route::post('/activityfour', [FourController::class, 'loginSubmit'])->name('login.submit');
 
 Route::get('/blog-data', [BlogController::class, 'index']);
 

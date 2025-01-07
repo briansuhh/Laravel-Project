@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class FourController extends Controller
 {
-    public function retrieve_data()
+    public function index()
     {
         $datas = [
             [
@@ -31,5 +33,23 @@ class FourController extends Controller
         ];
 
         return view('four', compact('datas'));
+    }
+    
+    public function loginSubmit(Request $request)
+    {
+        Log::info("Enter login page");
+
+        try {
+            $email = $request->input('email');
+            $password = $request->input('password');
+
+            Log::info('Email: ' . $email);
+            Log::info('Password: ' . $password);
+            
+            }catch(Exception $e){
+            Log::error("may error ka be");
+        }
+
+        Log::info("Exit login page");
     }
 }
