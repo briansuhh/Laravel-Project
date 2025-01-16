@@ -40,13 +40,11 @@ Route::group(['prefix' => 'admin'], function () {
     })->name('hello');
 });
 
-
 Route::get('/activityfour', [FourController::class, 'index']);
 
 Route::post('/activityfour', [FourController::class, 'loginSubmit'])->name('login.submit');
 
 Route::get('/blog-data', [BlogController::class, 'index']);
-
 
 Route::fallback(function () {
     return redirect()->route('homePage');

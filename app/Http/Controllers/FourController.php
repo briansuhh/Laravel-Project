@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -35,9 +36,13 @@ class FourController extends Controller
         return view('four', compact('datas'));
     }
     
-    public function loginSubmit(Request $request)
+    public function loginSubmit(LoginRequest $request)
     {
         Log::info("Enter login page");
+
+        // $request->validate([
+            
+        // ]);
 
         try {
             $email = $request->input('email');
