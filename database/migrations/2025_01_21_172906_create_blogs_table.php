@@ -15,10 +15,17 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->longtext('description');
-            // $table->integer('status_id');
-            // $table->integer('category_id');
-            $table->foreignId('status_id')->constrained();
-            $table->foreignId('category_id')->constrained();
+
+            // shortcut for creating the foreignId, but this will create a bigint data type
+            // $table->foreignId('status_id')->constrained();
+            // $table->foreignId('category_id')->constrained();
+
+            $table->unsignedInteger('status_id');
+            $table->unsignedInteger('category_id');
+
+            $table->foreign('status_id')->references('id')->on('statuses')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+
             $table->timestamps();
         });
 
