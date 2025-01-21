@@ -46,6 +46,10 @@ Route::post('/activityfour', [FourController::class, 'loginSubmit'])->name('logi
 
 Route::get('/blog-data', [BlogController::class, 'index']);
 
-Route::fallback(function () {
+Route::get('/blog/data', [BlogController::class, 'sampleModel']);
+Route::get('/blog/data/{id}', [BlogController::class, 'sampleModel']);
+Route::get('/blog/data/{id}/{cat}', [BlogController::class, 'sampleModel']);
+
+Route::fallback(function () {   
     return redirect()->route('homePage');
 });

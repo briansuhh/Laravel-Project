@@ -75,11 +75,11 @@
                     @foreach ($blogs as $blog)
                         <div class="col-lg-4">
                             <div class="card h-100">
-                                <img src="{{ $blog['picture'] }}" class="card-img-top" alt="...">
+                                {{-- <img src="{{ $blog['picture'] }}" class="card-img-top" alt="..."> --}}
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ $blog['title'] }}</h5>
-                                    <p class="card-text">{{ $blog['body'] }}</p>
-                                    @if ($blog['status'] == 1)
+                                    <h5 class="card-title">{{ $blog->title}}</h5>
+                                    <p class="card-text">{{ $blog->description}}</p>
+                                    @if ($blog->status == 1)
                                         <a href="#" class="btn btn-primary">Go somewhere</a>
                                     @endif
                                 </div>

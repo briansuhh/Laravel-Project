@@ -8,7 +8,7 @@
                         <div class="alert alert-danger" role="alert">
                             {{ $error }}
                         </div>
-                    @endforeach
+                    @endforeach 
                 @endif
                 <div></div>
                 <form method="POST" action="{{ route('login.submit') }}" class="border p-3">
