@@ -53,3 +53,9 @@ Route::get('/blog/data/{id}/{cat}', [BlogController::class, 'sampleModel']);
 Route::fallback(function () {   
     return redirect()->route('homePage');
 });
+
+
+
+
+
+Route::get('/data/{id}/{cat}/{stat}', [BlogController::class, 'sampleModel']);

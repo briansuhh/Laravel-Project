@@ -90,41 +90,75 @@ class BlogController extends Controller
         return view('admin.home1', compact('blogs'));
     }
 
-    public function sampleModel($id){
-        // $blogs = DB::table('blogs')->get();
+    // public function sampleModel($id){
+    //     // $blogs = DB::table('blogs')->get();
 
-        // $blogs = DB::table('blogs')->find($id);
+    //     // $blogs = DB::table('blogs')->find($id);
 
-        // $blogs = DB::table('blogs')->where('status', '!=', $id)->get();
+    //     // $blogs = DB::table('blogs')->where('status', '!=', $id)->get();
 
+    //     // $blogs = DB::table('blogs')->insert([
+    //     //     'title' => 'Sample Title',
+    //     //     'description' => 'Sample Description',
+    //     //     'status' => 1,
+    //     //     'category_id' => 3,
+    //     //     'created_at' => date('Y-m-d H-i-s')
+    //     // ]);
+
+
+    //     // $blogs = DB::table('blogs')
+    //     //         ->where('id', $id)
+    //     //         ->update([
+    //     //             'description' => '1231'
+    //     //         ]);
+
+    //     // $blogs = DB
+
+    //     // return view('admin.home1', compact('blogs'));
+    //     // return $blogs;
+
+    //     // return Blog::all();
+    //     // return Blog::find($id);
+
+    //     $blog = Blog::find($id);
+    //     if ($blog) {
+    //         $blog->delete();
+    //     }
+    //     return $blog;
+        
+    // }
+
+    public function sampleModel($id, $cat, $stat){
+        // gumagamit ng db table
+        // for reading ng table
+        // $blogs = DB::table('categories')->get();
+
+        // for inserting a row in a table
         // $blogs = DB::table('blogs')->insert([
-        //     'title' => 'Sample Title',
-        //     'description' => 'Sample Description',
-        //     'status' => 1,
-        //     'category_id' => 3,
-        //     'created_at' => date('Y-m-d H-i-s')
+        //     'title' => 'brian',
+        //     'description' => 'malakas',
+        //     'status_id' => '1',
+        //     'category_id' => '1'
         // ]);
 
+        // for updating a row in a table
+        $blogs = DB::table('blogs')
+                ->where('id', $id)
+                ->update([
+                    'title' => 'briann',
+                    'description' => 'trial',
+                    'status_id' => $stat,
+                    'category_id' => $cat
+                ]);
 
+        // for deleting a row in a table
         // $blogs = DB::table('blogs')
         //         ->where('id', $id)
-        //         ->update([
-        //             'description' => '1231'
-        //         ]);
+        //         ->delete();
 
-        // $blogs = DB
-
-        // return view('admin.home1', compact('blogs'));
-        // return $blogs;
-
-        // return Blog::all();
-        // return Blog::find($id);
-
-        $blog = Blog::find($id);
-        if ($blog) {
-            $blog->delete();
-        }
-        return $blog;
-        
+        // gumagamit ng model
+        // for reading ng table
+        // $blogs = Blog::all();
+        return $blogs;
     }
 }
