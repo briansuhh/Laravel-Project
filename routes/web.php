@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\FourController;
+use App\Http\Controllers\NineController;
 use Illuminate\Support\Facades\Route;
 use Psy\CodeCleaner\FunctionReturnInWriteContextPass;
 
@@ -54,8 +55,15 @@ Route::fallback(function () {
     return redirect()->route('homePage');
 });
 
-
-
-
-
 Route::get('/data/{id}/{cat}/{stat}', [BlogController::class, 'sampleModel']);
+
+// to get the category and status
+// Route::get('nine', [NineController::class, 'getCategStatus']);
+
+
+// to get all the blog, categories, and status
+Route::get('nine', [NineController::class, 'getAllRecords']);
+
+
+// to submit the form and add the new record
+Route::post('nine', [NineController::class, 'addRecord'])->name('blog.submit');
