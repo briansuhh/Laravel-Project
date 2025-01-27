@@ -1,14 +1,14 @@
 @extends('layout.master')
 @section('content')
     <div class="container-fluid">
-        <div class="row">
+        <div class="row p-1">
             <h1>Blog Record</h1>
         </div>
         <div class="row">
             <div class="col">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#blogModal">
-                    Launch demo modal
+                <button type="button" class="btn btn-dark txt-white px-3 p-1" data-bs-toggle="modal" data-bs-target="#blogModal">
+                    Add Blog <i class="bi bi-plus"></i>
                 </button>
 
                 <!-- Modal -->
@@ -40,7 +40,7 @@
                                         <select class="form-select" id="inputCateg" name="category">
                                             <option selected>Choose...</option>
                                             @foreach ($categories as $category)
-                                                <option>{{ $category['name'] }}</option>
+                                                <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -49,7 +49,7 @@
                                         <select class="form-select" id="inputStatus" name="status">
                                             <option selected>Choose...</option>
                                             @foreach ($statuses as $status)
-                                                <option>{{ $status['status'] }}</option>
+                                                <option value="{{ $status['id'] }}">{{ $status['status'] }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -57,16 +57,16 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary" form="blogForm">Add</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close<i class="bi bi-x"></i></button>
+                                <button type="submit" class="btn btn-dark txt-white" form="blogForm">Add Record<i class="bi bi-plus"></i></button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-
+                <div class="row p-2 py-2">
                 <table class="table table-striped table-hover caption-top p-3">
-                    <caption class="h5 text-center fw-bold text-dark">Compare plans</caption>
+                    {{-- <caption class="h5 text-center fw-bold text-dark">Blog Records</caption> --}}
                     <thead class="table-dark">
                         <tr>
                             @foreach ($columns as $column)
@@ -88,6 +88,7 @@
                         @endforeach
                     </tbody>
                 </table>
+            </div>
 
             </div>
         </div>

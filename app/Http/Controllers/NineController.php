@@ -14,31 +14,20 @@ use Illuminate\Support\Facades\Schema;
 
 class NineController extends Controller
 {
-    public function getCategStatus() {
-        $categ = Category::all();
-        $status = Status::all();
-
-        // return [
-        //     'categories' => $categ,
-        //     'statuses' => $status
-        // ];
-
-        return view('nine', ['categories' => $categ,'statuses' => $status]);
-    }
-
-    public function addRecord(NineRequest $request){
+    public function addRecord(NineRequest $request)
+    {
 
         $title = $request->input('title');
         $description = $request->input('description');
         $status = $request->input('status');
         $category = $request->input('category');
-        
+
         // transfer sa database
-         $blogs = DB::table('blogs')->insert([
+        $blogs = DB::table('blogs')->insert([
             'title' => $title,
             'description' => $description,
-            'status_id' => 1,
-            'category_id' => 1,
+            'status_id' => $status,
+            'category_id' => $category,
             'created_at' => date('Y-m-d H-i-s'),
             'updated_at' => date('Y-m-d H-i-s')
         ]);
@@ -48,18 +37,25 @@ class NineController extends Controller
             'description' => $description,
             'category' => $category,
             'status' => $status,
-        ]); 
-
-        return view('nine');
+        ]);
     }
 
-    public function getAllRecords(){
-        $blogs = Blog::all();
+    public function getAllRecords()
+    {
         $columns = Schema::getColumnListing('blogs');
+        $blogs = Blog::all();
         $categ = Category::all();
         $status = Status::all();
 
-        return view('nine', ['blogs' => $blogs,'columns' => $columns, 
-                            'categories' => $categ,'statuses' => $status]);
+        // $blogs = DB::table('blogs')->get();
+        // $categ = DB::table('categories')->get();
+        // $status = DB::table('statuses')->get();
+
+        return view('nine', [
+            'columns' => $columns,
+            'blogs' => $blogs,
+            'categories' => $categ,
+            'statuses' => $status
+        ]);
     }
 }
