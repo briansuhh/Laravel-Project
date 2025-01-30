@@ -62,8 +62,21 @@ Route::get('/data/{id}/{cat}/{stat}', [BlogController::class, 'sampleModel']);
 
 
 // to get all the blog, categories, and status
-Route::get('nine', [NineController::class, 'getAllRecords']);
+Route::get('nine', [NineController::class, 'getAllRecords'])->name('blog.get');
 
 
 // to submit the form and add the new record
 Route::post('nine', [NineController::class, 'addRecord'])->name('blog.submit');
+
+Route::get('catstat', [BlogController::class, 'indexWithCategoryStatus']);
+
+Route::get('indexblogs', [BlogController::class, 'indexBlogs']);
+
+
+
+Route::get('actnine', [NineController::class, 'index'])->name('blog.get');
+Route::post('actnine', [NineController::class, 'createBlogData'])->name('blog.create');
+
+Route::get('testing', function(){
+    return view('testing');
+});

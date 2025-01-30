@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Category;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -159,6 +160,23 @@ class BlogController extends Controller
         // gumagamit ng model
         // for reading ng table
         // $blogs = Blog::all();
+        return $blogs;
+    }
+
+
+    // sample function on getting the blog that has a reference on the other 2 tables (one to one)
+    public function indexWithCategoryStatus(Request $request){
+        $blogs = Blog::with('category', 'status')
+            ->orderBy('created_at', 'DESC')
+            ->get();
+
+        return $blogs;
+    }
+
+    // sample function on getting the category that has a reference on blog (one to many)
+    public function indexBlogs(Request $request){
+        $blogs = Category::with('blog')->get();
+
         return $blogs;
     }
 }
