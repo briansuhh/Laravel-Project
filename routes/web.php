@@ -3,6 +3,7 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\FourController;
 use App\Http\Controllers\NineController;
+use App\Http\Controllers\InputController;
 use Illuminate\Support\Facades\Route;
 use Psy\CodeCleaner\FunctionReturnInWriteContextPass;
 
@@ -80,3 +81,8 @@ Route::post('actnine', [NineController::class, 'createBlogData'])->name('blog.cr
 Route::get('testing', function(){
     return view('testing');
 });
+
+
+
+Route::get('bloginput', [InputController::class, 'index']);
+Route::post('bloginput', [InputController::class, 'createBlogData'])->name('blog.add');
